@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/financialLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Label"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/financialValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="Value"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/financialColon"
+        app:layout_constraintTop_toTopOf="@+id/financialLabel" />
+
+    <TextView
+        android:id="@+id/financialColon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:text=":"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/financialLabel"
+        app:layout_constraintTop_toTopOf="@+id/financialLabel" />
+</androidx.constraintlayout.widget.ConstraintLayout>
