@@ -1,8 +1,6 @@
 package com.seedbx.stockmonitor
 
 import android.content.Context
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -10,33 +8,46 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 
 
-class GetData(private val context: Context, private val activity: AppCompatActivity, private val listener: OnResponse) {
+class GetData(context: Context, private val listener: OnResponse) {
 
+    /** A [RequestQueue] to store all the network requests */
     private val queue: RequestQueue = Volley.newRequestQueue(context)
 
-    private val url="http://192.168.1.12:3000/stock/get/data"
+    /** A [String] which URL of the API end-point which returns list of StockData */
+    private val url="${context.resources.getString(R.string.ip_address)}/stock/get/data"
 
-    private val TAG = "GetData"
-
-    private val SPLASH_TIMEOUT=500L
-
+    /** Interface containing functions which describe how response should be handled */
     interface OnResponse{
-        fun onResponseComplete(activity:AppCompatActivity, response:String, timeout: Long)
-        fun onResponseError(activity: AppCompatActivity, timeout: Long)
+
+        /**
+         * Handles successful completion of response
+         *
+         * @param response A [String], the response of the POST request
+         */
+        fun onResponseComplete(response:String)
+
+        /**
+         * Handles unsuccessful completion of response
+         */
+        fun onResponseError()
     }
 
+    /**
+     * Sends a POST request to url and handles its response
+     */
     fun getData() {
 
-        val stringRequest = StringRequest(Request.Method.POST, url,
+        val stringRequest = StringRequest(
+            Request.Method.POST, url,
                 { response ->
-                    listener.onResponseComplete(activity, response, SPLASH_TIMEOUT)
+                    listener.onResponseComplete(response)
                 },
-                { error ->
-                    Log.e(TAG, "getData: error is $error")
-                    listener.onResponseError(activity, SPLASH_TIMEOUT)
+                {
+                    listener.onResponseError()
                 }
         )
 
+        /** Retry policy for request */
         stringRequest.retryPolicy = DefaultRetryPolicy(
                 1000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
