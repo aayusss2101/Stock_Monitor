@@ -1,2 +1,4 @@
 # Stock_Monitor
-An application that helps in monitoring stocks.
+This is an application that helps in monitoring stocks.
+
+![Sample](https://github.com/aayusss2101/Stock_Monitor/blob/master/sample.gif)
