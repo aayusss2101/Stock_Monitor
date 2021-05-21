@@ -1,6 +1,12 @@
 <resources>
+
+    <!-- IP Address of the API -->
     <string name="ip_address">http://192.168.1.10:3000</string>
+
+    <!-- Name of the Application -->
     <string name="app_name">Stock Monitor</string>
+
+    <!-- Label Values for HomeActivity -->
     <string name="pe_ratio_label">P/E Ratio</string>
     <string name="pb_ratio_label">P/B Ratio</string>
     <string name="fifty_two_week_high_label">52-wk High</string>
@@ -8,6 +14,9 @@
     <string name="home_btn_1">Sort</string>
     <string name="home_btn_2">Filter</string>
     <string name="home_btn_3">Wishlist</string>
+
+    <!-- Label Values for SortPopupWindow -->
     <string name="sort_radio_btn_1">Company Name</string>
     <string name="sort_radio_btn_2">Market Capitalisation</string>
+
 </resources>
